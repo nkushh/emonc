@@ -81,13 +81,14 @@ def delete_participation():
         db.session.commit()
     return make_response(jsonify({'message' : 'All records deleted!'}), 200)
     
-
+# Checks if both cme and drill were done
 def both_cme_and_drill_done(assessment):
     assessments_done = assessment.split()
     if len(assessments_done) > 1:
         return True
     return False
 
+# Get facility code and faciliy name in the facility details provided
 def get_facility_code(county, record):
     name = f"mentor_checklist/mentor/q_facility_{county.lower()}"
 
@@ -96,12 +97,13 @@ def get_facility_code(county, record):
     facility_name = ' '.join(facility_name_list)
     return facility_code, facility_name
 
+# Format topic names by removing the undrscores and replacing them with spaces
 def convert_topic_names(topic_name):
     topic_arr = topic_name.split("/")
     correct_name = topic_arr[0].replace('_', ' ')
     return correct_name
     
-
+# Check if a cme topic already exists in the database and fetch its unique code, else create one
 def check_cme_unique_code(cme_topic):
     digits = 8
     try:
@@ -113,6 +115,7 @@ def check_cme_unique_code(cme_topic):
         cme_unique_code = random.randint(min, max)
     return cme_unique_code
 
+# Check if a drill topic already exists in the database and fetch its unique code, else create one
 def check_drill_unique_code(drill_topic):
     digits = 8
     try:
@@ -124,6 +127,7 @@ def check_drill_unique_code(drill_topic):
         drill_unique_code = random.randint(min, max)
     return drill_unique_code
 
+# Get all participants of each cme by their unique id numbers and store them in a list
 def get_cme_providers(record):
     column_name = "mentor_checklist/cme_grp/standard_phone_numbers_cme/"
     all_cme_providers = []
@@ -132,16 +136,19 @@ def get_cme_providers(record):
             all_cme_providers.append(record[i])
     return all_cme_providers
 
+# Check if a cme topic is essential as per the provided cme essential topics
 def check_essential_cme_topic(topic, essential_topics):
     if topic in essential_topics:
         return True
     return False
 
+# Check if a drill topic is essential as per the provided essential drill topics
 def check_essential_drill_topic(topic, essential_topics):
     if topic in essential_topics:
         return True
     return False
 
+# Get all participants of each drill by their unique id numbers and store them in a list
 def get_drill_providers(record):
     column_name = "mentor_checklist/drills_grp/id_numbers_drill/"
     all_drill_providers = []
