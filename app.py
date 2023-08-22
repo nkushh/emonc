@@ -157,7 +157,7 @@ def process_and_store():
     try:
         essential_cme_topics = ['Postpartum haemorrhage (PPH)', 'Infection prevention']
         essential_drill_topics = ['Eclampsia']
-        # Process data (replace this with your processing logic)
+        
         data_to_process = []
         for record in sheet.get_all_records():
             if record['__version__']:
