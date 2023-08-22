@@ -1,0 +1,7 @@
+.DS_Store
+.dockerignore
+.env
+.python-version
+service_account.json
+/venv_emonc
+__pycache__/
