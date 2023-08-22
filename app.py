@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-# app.config['SECRET_KEY'] = os.getenv("FLASK_SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("FLASK_SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 
 db = SQLAlchemy(app)
