@@ -69,22 +69,13 @@ Once the Dockerfile is complete and correct run the command docker build -t imag
 - Docker images are read-only when created meaning that if you were to make any changes to your source code you will have to rebuild the image again for the changes to be effected.
 
 Usage
-Access the API by sending GET requests to http://localhost:5000/api/data.
-The API fetches data from Google Sheets, processes it, and stores it in the PostgreSQL database.
+The application is currently hosted on Render.
+The default endpoint is https://emonc.onrender.com
+To view all the current existing data, access the API by sending GET requests to http://localhost:5000/get_participations.
+
+To featch, process, format and store data from the google sheet, send the POST request to http://localhost:5000/process_and_store the API fetches data from Google Sheets, processes it, and stores it in the PostgreSQL database.
 Check the logs for information about the API's behavior and database updates.
 Endpoints
-GET /api/data: Fetches data from Google Sheets, processes it, saves it to the database, and returns a success message.
-Contributing
-Contributions are welcome! If you have improvements or new features to add, please follow these steps:
-
-Fork the repository.
-Create a new branch for your feature: git checkout -b feature-name.
-Make your changes and commit them: git commit -m "Add some feature".
-Push the changes to your fork: git push origin feature-name.
-Create a pull request explaining your changes.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Acknowledgments
-This project was inspired by the need to integrate Google Sheets data with a Flask application and store it in a PostgreSQL database.
-Feel free to customize this README file to match the specifics of your repository and the implementation details of your Flask API application.
+GET /get_participations: Fetches data that has already been processed and saved in the database, and returns a list of objects.
+POST /process_and_store: Fetches data from Google Sheets, processes it, saves it to the database, and returns a success message.
+GET /delete_participations: deletes all existing data from teh database, and returns a success message.
