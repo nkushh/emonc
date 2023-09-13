@@ -71,10 +71,11 @@ Once the Dockerfile is complete and correct run the command docker build -t imag
 Usage
 The application is currently hosted on Render.
 The default endpoint is https://emonc.onrender.com
-To view all the current existing data, access the API by sending GET requests to http://localhost:5000/get_participations.
+To view all the current existing data, access the API by sending GET requests to http://emonc.onrender.com/get_participation.
 
-To featch, process, format and store data from the google sheet, send the POST request to http://localhost:5000/process_and_store the API fetches data from Google Sheets, processes it, and stores it in the PostgreSQL database.
+To fetch, process, format and store data from the google sheet, send the POST request to https://emonc.onrender.com/process_and_store the API fetches data from Google Sheets, processes it, and stores it in the PostgreSQL database.
 Check the logs for information about the API's behavior and database updates.
+
 Endpoints
 GET /get_participations: Fetches data that has already been processed and saved in the database, and returns a list of objects.
 POST /process_and_store: Fetches data from Google Sheets, processes it, saves it to the database, and returns a success message.
